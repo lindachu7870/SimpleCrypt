@@ -27,7 +27,7 @@ public class ROT13  {
                 c = (char) ((c - 'a' + shift) % 26 + 'a');
                 s.append(c);
 
-            } else if (c >= "A" && c <= "Z") {
+            } else if (c >= 'A'&& c <= 'Z') {
                 c = (char) ((c - 'A' + shift) % 26 + 'A');
                 s.append(c);
 
@@ -40,16 +40,16 @@ public class ROT13  {
     }
 
     public String encrypt(String text) {
-        return text;
+        return crypt(text);
     }
 
     public String decrypt(String text) {
-        return text;
+        return crypt(text);
     }
 
     public static String rotate(String s, Character c) {
-
-        return "";
+        int shift = s.indexOf(c);
+        return s.substring(shift) + s.substring(0, shift);
     }
 
 }
