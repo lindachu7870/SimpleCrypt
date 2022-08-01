@@ -1,19 +1,42 @@
-import static java.lang.Character.isLowerCase;
-import static java.lang.Character.isUpperCase;
-import static java.lang.Character.toLowerCase;
-
 public class ROT13  {
 
+    public Integer shift;
+
     ROT13(Character cs, Character cf) {
+        if (cf - cs > 0) {
+            this.shift = cf - cs;
+        } else if (cf - cs < 0) {
+            this.shift = cf - cs;
+        }
     }
 
     ROT13() {
+        this.shift = 13;
     }
 
 
     public String crypt(String text) throws UnsupportedOperationException {
 
-        return "";
+        int shift = 13;
+        StringBuilder s = new StringBuilder();
+
+        for (int i = 0; i < text.length(); i++) {
+            char c = text.charAt(i);
+
+            if (c >= 'a' && c <= 'z') {
+                c = (char) ((c - 'a' + shift) % 26 + 'a');
+                s.append(c);
+
+            } else if (c >= "A" && c <= "Z") {
+                c = (char) ((c - 'A' + shift) % 26 + 'A');
+                s.append(c);
+
+            } else {
+                s.append(c);
+            }
+
+        } return s.toString();
+
     }
 
     public String encrypt(String text) {
@@ -30,3 +53,5 @@ public class ROT13  {
     }
 
 }
+
+
